@@ -1,3 +1,4 @@
+
 name: Build Android APK
 
 on:
@@ -22,12 +23,17 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Instalar Android SDK
+      - name: Preparar Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          accept-android-sdk-licenses: false
+          log-accepted-android-sdk-licenses: false
+
+      - name: Aceitar licenças do Android SDK
+        run: yes | sdkmanager --licenses
 
       - name: Extrair arquivos do projeto
-        run: |
-          unzip -o RobloxKeepAlive-pronto-para-GitHub.zip -d .
+        run: unzip -o RobloxKeepAlive-pronto-para-GitHub.zip -d .
 
       - name: Configurar Gradle
         uses: gradle/actions/setup-gradle@v4

@@ -26,11 +26,9 @@ jobs:
       - name: Preparar Android SDK
         uses: android-actions/setup-android@v3
         with:
-          accept-android-sdk-licenses: false
+          packages: 'platform-tools'
+          accept-android-sdk-licenses: true
           log-accepted-android-sdk-licenses: false
-
-      - name: Aceitar licenças do Android SDK
-        run: yes | sdkmanager --licenses
 
       - name: Extrair arquivos do projeto
         run: unzip -o RobloxKeepAlive-pronto-para-GitHub.zip -d .
